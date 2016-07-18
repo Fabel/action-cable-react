@@ -32,12 +32,10 @@ class ConnectionMonitor
     delete @stoppedAt
     @startedAt = now()
     @poll()
-    console.log 'subscribe'
     # @appComponent.addEventListener('visibilitychange', @visibilityDidChange)
 
   stop: ->
     @stoppedAt = now()
-    console.log 'un-subscribe'
     # @appComponent.removeEventListener('visibilitychange', @visibilityDidChange)
 
   poll: ->

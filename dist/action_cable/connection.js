@@ -15,7 +15,6 @@ Connection = (function() {
   }
 
   Connection.prototype.send = function(data) {
-    console.log("Connection: send " + data);
     if (this.isOpen()) {
       this.webSocket.send(JSON.stringify(data));
       return true;
@@ -25,12 +24,9 @@ Connection = (function() {
   };
 
   Connection.prototype.open = function() {
-    console.log("Connection: open");
     if (this.webSocket && !this.isState('closed')) {
-      console.log("Connection: open 1");
       throw new Error('Existing connection must be closed before opening');
     } else {
-      console.log("Connection: open 2");
       this.webSocket = new WebSocket(this.consumer.url);
       this.installEventHandlers();
       return true;

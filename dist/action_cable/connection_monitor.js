@@ -42,13 +42,11 @@ ConnectionMonitor = (function() {
     this.reset();
     delete this.stoppedAt;
     this.startedAt = now();
-    this.poll();
-    return console.log('subscribe');
+    return this.poll();
   };
 
   ConnectionMonitor.prototype.stop = function() {
-    this.stoppedAt = now();
-    return console.log('un-subscribe');
+    return this.stoppedAt = now();
   };
 
   ConnectionMonitor.prototype.poll = function() {

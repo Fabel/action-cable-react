@@ -7,7 +7,6 @@ class Connection
     @open()
 
   send: (data) ->
-    console.log "Connection: send #{data}"
     if @isOpen()
       @webSocket.send(JSON.stringify(data))
       true
@@ -15,12 +14,9 @@ class Connection
       false
 
   open: =>
-    console.log "Connection: open"
     if @webSocket and not @isState('closed')
-      console.log "Connection: open 1"
       throw new Error('Existing connection must be closed before opening')
     else
-      console.log "Connection: open 2"
       @webSocket = new WebSocket(@consumer.url)
       @installEventHandlers()
       true
